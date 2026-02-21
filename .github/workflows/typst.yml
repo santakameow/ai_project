@@ -1,0 +1,39 @@
+name: Build Typst PDF
+
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
+
+      - name: Compile PDF
+        run: |
+          mkdir -p build
+          typst compile main.typ build/main.pdf
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: typst-pdf
+          path: build/main.pdf
+
+      - name: Upload PDF to release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/main.pdf
