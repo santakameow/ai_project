@@ -282,3 +282,19 @@
 - Duolingo -- использует нейросети для персонализации
 - Gradescope -- автоматическая проверка письменных работ
 - Squirrel AI -- персональный помощник ученика на базе нейросетей
+
+---
+
+#box(
+  stroke: 1pt + gray,
+  inset: 1em,
+  [
+    *Проект Open-Source*
+
+    Этот проект распространяется на открытой лицензии и доступен для всех.
+
+    Исходный код: #link("https://github.com/santakameow/ai_project")[#text(fill: blue, "github.com/santakameow/ai_project")]
+
+    *Благодарность:* Спасибо #link("https://github.com/sleroq")[#text(fill: blue, "sleroq")] за вклад в развитие этого проекта!
+  ]
+)
